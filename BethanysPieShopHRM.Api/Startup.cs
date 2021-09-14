@@ -28,6 +28,8 @@ namespace BethanysPieShopHRM.Api
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
+            //services.AddHttpClient<IEmployeeDat>
+
 			services.AddCors(options =>
             {
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
