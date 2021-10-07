@@ -1,0 +1,83 @@
+﻿@page "/employeeedit"
+@page "/employeeedit/{EmployeeId}"
+
+<section class="employee-edit">
+	<h1 class=page-title>
+		<h1 class="page-title">
+			Details for @Employee.FirstName @Employee.LastName
+		</h1>
+
+		<EditForm Model="@Employee">
+			<!--Last Name-->
+			<div class="form-group row">
+				<label for="LastName" class="col-sm-3">Last Name:</label>
+				<InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Employee.LastName" placeholder="Enter Last Name"  />
+			</div>
+
+			<!--First Name-->
+			<div class="form-group row">
+				<label for="FirstName" class="col-sm-3">First Name:</label>
+				<InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Employee.FirstName" placeholder="Enter Last Name"  />
+			</div>
+
+			<!--Birth Date-->
+			<div class="form-group row">
+				<label for="BirthDate" class="col-sm-3">Birth Date:</label>
+				<InputDate id="birthDate" class="form-control col-sm-8" @bind-Value="@Employee.BirthDate" placeholder="Enter Select Date"/>
+			</div>
+
+			<!--Email-->
+			<div class="form-group row">
+				<label for="email" class="col-sm-3">Email:</label>
+				<InputText id="email" class="form-control col-sm-8" @bind-Value="@Employee.Email" placeholder="Enter email address"  />
+			</div>
+
+			<!--Street-->
+			<div class="form-group row">
+				<label for="Street" class="col-sm-3">Street:</label>
+				<InputText id="street" class="form-control col-sm-8" @bind-Value="@Employee.Street" placeholder="Enter Street"  />
+			</div>
+
+			<!--ZipCode-->
+			<div class="form-group row">
+				<label for="Zip" class="col-sm-3">Zip Code:</label>
+				<InputText id="zip" class="form-control col-sm-8" @bind-Value="@Employee.Zip" placeholder="Enter Zip code"  />
+			</div>
+
+			<!--City-->
+			<div class="form-group row">
+				<label for="city" class="col-sm-3">City:</label>
+				<InputText id="city" class="form-control col-sm-8" @bind-Value="@Employee.City" placeholder="Enter City"  />
+			</div>
+
+			<!--Employee Country-->
+			<div class="form-group row">
+				<label for="country" class="col-sm-3">Country:</label>
+				<InputSelect id = "country" class="form-control col-sm-8" @bind-Value="CountryId">
+					@foreach (var country in Countries)
+					{
+						<option value=@country.CountryId>@country.Name</option>
+					}
+				</InputSelect>
+			</div>
+
+			<!--Phone Number-->
+			<div class="form-group row">
+				<label for="phone" class="col-sm-3">Phone Number:</label>
+				<InputText id="phoneNumber" class="form-control col-sm-8" @bind-Value="@Employee.PhoneNumber" placeholder="Enter Phone"  />
+			</div>
+
+			<!--Longitude-->
+			<!--<div class="form-group row">
+				<label for="longitude" class="col-sm-3">Longitude:</label>
+				<InputText id="longitude" class="form-control col-sm-8" @bind-Value="@Employee.Longitude" placeholder="Enter Longitude"  />
+			</div>-->
+
+			<!--Latitude-->
+			<!--<div class="form-group row">
+				<label for="latitude" class="col-sm-3">Longitude:</label>
+				<InputText id="latitude" class="form-control col-sm-8" @bind-Value="@Employee.Latitude" placeholder="Enter Latitude"  />
+			</div>-->
+		</EditForm>
+	</h1>
+</section>
