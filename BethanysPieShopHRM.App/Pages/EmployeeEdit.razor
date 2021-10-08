@@ -2,12 +2,14 @@
 @page "/employeeedit/{EmployeeId}"
 @using BethanysPieShopHRM.Shared
 
-<section class="employee-edit">
-	<h1 class=page-title>
-		
-		Details for @Employee.FirstName @Employee.LastName
+@if (!Saved)
+{
+    <section class="employee-edit">
+    <h1 class=page-title>
 
-        <EditForm Model="@Employee">
+        Details for @Employee.FirstName @Employee.LastName
+
+        <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
             <!--First Name-->
             <div class="form-group row">
                 <label for="FirstName" class="col-sm-3">First Name:</label>
@@ -55,9 +57,9 @@
                 <label for="country" class="col-sm-3">Country:</label>
                 <InputSelect id="country" class="form-control col-sm-8" @bind-Value="CountryId">
                     @foreach (var country in Countries)
-                    {
+                        {
                         <option value=@country.CountryId>@country.Name</option>
-                    }
+                        }
                 </InputSelect>
             </div>
 
@@ -91,9 +93,9 @@
                 <label for="jobcategory" class="col-sm-3">Job Category:</label>
                 <InputSelect id="country" class="form-control col-sm-8" @bind-Value="JobCategoryId">
                     @foreach (var jobCategory in JobCategories)
-                    {
+                        {
                         <option value=@jobCategory.JobCategoryId>@jobCategory.JobCategoryName</option>
-                    }
+                        }
                 </InputSelect>
             </div>
 
@@ -137,7 +139,21 @@
                 <InputTextArea id="comment" class="form-control col-sm-8" @bind-Value="@Employee.Comment" placeholder="Enter Comments" />
             </div>
 
-            <button type="submit" class="btn btn-primary edit-btn">Save employee</button>
+            <div class="form-group row">
+                <button type="submit" class="btn btn-primary edit-btn">Save employee</button>
+            </div>
+
+            @if (Employee.EmployeeId > 0)
+            {
+                <a class="btn btn-danger" @onclick="@DeleteEmployee">Delete</a>
+            }
+
+            <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
         </EditForm>
-	</h1>
+    </h1>
 </section>
+}
+else
+{
+    <div class="alert @StatusClass">@Message</div>
+}
