@@ -18,27 +18,31 @@ else
                 <th></th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var item in Employees)
             {
-            <tr>
-                <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{item.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
+                <tr>
+                    <td>
+                        <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{item.EmployeeId}-small.jpg")" class="rounded-circle" />
+                    </td>
 
-                <td>@item.EmployeeId</td>
+                    <td>@item.EmployeeId</td>
 
-                <td>@item.FirstName</td>
+                    <td>@item.FirstName</td>
 
-                <td>@item.LastName</td>
+                    <td>@item.LastName</td>
 
-                <td>
-                    <a href=@($"employeedetail/{ item.EmployeeId }") class="btn btn-primary table-btn">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                    <a href=@($"employeeedit/{ item.EmployeeId }") class="btn btn-primary table-btn">
-                        Edit
-                    </a>
-                </td>
-            </tr>
+                    <td>
+                        <a href=@($"employeedetail/{ item.EmployeeId }") class="btn btn-primary table-btn">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+
+                        <a href=@($"employeeedit/{ item.EmployeeId }") class="btn btn-primary table-btn">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

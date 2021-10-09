@@ -59,7 +59,8 @@ namespace BethanysPieShopHRM.App.Pages
         protected async Task HandleValidSubmit()
         {
             Saved = false;
-            Employee.JobCategoryId = int.Parse(CountryId);
+
+            Employee.JobCategoryId = int.Parse(JobCategoryId);
             Employee.CountryId = int.Parse(CountryId);
 
             if (Employee.EmployeeId == 0)
@@ -80,13 +81,20 @@ namespace BethanysPieShopHRM.App.Pages
                 }
             }
             else
+            {
                 await EmployeeService.UpdateEmployee(Employee);
+
+                StatusClass = "alert-success";
+                Message = "Existing employee updated successfully!!";
+                Saved = true;
+            }
         }
 
         protected void HandleInvalidSubmit()
         {
             StatusClass = "alert-danger";
             Message = "Something went wrong adding new employeed. Plz try later";
+            Saved = false;
         }
 
         protected async Task DeleteEmployee()

@@ -31,7 +31,7 @@ namespace BethanysPieShopHRM.App.Services
 
         public async Task DeleteEmployee(int employeeId)
         {
-            await _httpClient.DeleteAsync($"api/employee{ employeeId }");
+            await _httpClient.DeleteAsync($"api/employee/{ employeeId }");
         }
 
         public async Task<IEnumerable<Employee>> GetAllEmployees()

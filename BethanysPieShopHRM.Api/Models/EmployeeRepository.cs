@@ -45,6 +45,8 @@ namespace BethanysPieShopHRM.Api.Models
                 foundEmployee.LastName = employee.LastName;
                 foundEmployee.Gender = employee.Gender;
                 foundEmployee.PhoneNumber = employee.PhoneNumber;
+                foundEmployee.Longitude = employee.Longitude;
+                foundEmployee.Latitude = employee.Latitude;
                 foundEmployee.Smoker = employee.Smoker;
                 foundEmployee.Street = employee.Street;
                 foundEmployee.Zip = employee.Zip;

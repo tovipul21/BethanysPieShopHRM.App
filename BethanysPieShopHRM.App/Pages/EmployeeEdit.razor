@@ -10,16 +10,22 @@
         Details for @Employee.FirstName @Employee.LastName
 
         <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+
             <!--First Name-->
             <div class="form-group row">
                 <label for="FirstName" class="col-sm-3">First Name:</label>
                 <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Employee.FirstName" placeholder="Enter Last Name" />
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.FirstName)"/>
             </div>
 
             <!--Last Name-->
             <div class="form-group row">
                 <label for="LastName" class="col-sm-3">Last Name:</label>
                 <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Employee.LastName" placeholder="Enter Last Name" />
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.LastName)" />
             </div>
 
             <!--Birth Date-->
@@ -139,16 +145,17 @@
                 <InputTextArea id="comment" class="form-control col-sm-8" @bind-Value="@Employee.Comment" placeholder="Enter Comments" />
             </div>
 
+            <!-- Group for Buttons -->
             <div class="form-group row">
                 <button type="submit" class="btn btn-primary edit-btn">Save employee</button>
+
+                @if (Employee.EmployeeId > 0)
+                {
+                    <a class="btn btn-danger" @onclick="@DeleteEmployee">Delete</a>
+                }
+
+                <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
             </div>
-
-            @if (Employee.EmployeeId > 0)
-            {
-                <a class="btn btn-danger" @onclick="@DeleteEmployee">Delete</a>
-            }
-
-            <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
         </EditForm>
     </h1>
 </section>
