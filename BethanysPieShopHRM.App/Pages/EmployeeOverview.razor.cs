@@ -10,12 +10,16 @@ namespace BethanysPieShopHRM.App.Pages
 {
     public partial class EmployeeOverview
     {
-		public IEnumerable<Employee> Employees { get; set; }
+		public List<Employee> Employees { get; set; }
+
+        private Employee? _selectedEmployee;
 
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
         protected AddEmployeeDialog AddEmployeeDialog { get; set; }
+        
+        protected QuickNewPopUp QuickNewPopUpDialog { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -25,6 +29,16 @@ namespace BethanysPieShopHRM.App.Pages
         protected void QuickAddEmployee()
         {
             AddEmployeeDialog.Show();
+        }
+
+        public void ShowQuickViewPopUp(Employee selectedEmployee)
+        {
+            _selectedEmployee = selectedEmployee;
+        }
+
+        public void ShowNewViewPopUp()
+        {
+            QuickNewPopUpDialog.Show();
         }
 
         public async void AddEmployeeDialog_OnDialogClose()
